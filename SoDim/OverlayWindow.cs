@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace SoDim
 {
-    public partial class Form1 : Form
+    public partial class OverlayWindow : Form
     {
-        public Form1()
+        public OverlayWindow(Size size, double opacity)
         {
             InitializeComponent();
+            this.Size = size;
+            this.Opacity = opacity;
         }
     }
 }

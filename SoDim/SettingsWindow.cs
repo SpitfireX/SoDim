@@ -24,16 +24,16 @@ namespace SoDim
         {
             label1.Text = trackBar1.Value.ToString();
             if (overlay != null)
-                overlay.Opacity = ((double)trackBar1.Value) / 100;
+                overlay.SetOpacity(((double)trackBar1.Value) / 100);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (overlay == null)
             {
-                double opacity = ((double) trackBar1.Value) / 100;
-                Debug.WriteLine(opacity);
-                overlay = new OverlayWindow(new Size(600, 600), opacity);
+                Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
+                overlay = new OverlayWindow(new Point(screenBounds.X, screenBounds.Y), new Size(screenBounds.Width, screenBounds.Height), ((double)trackBar1.Value) / 100);
+                overlay.Owner = this;
                 overlay.Show();
             }
             else
@@ -41,6 +41,11 @@ namespace SoDim
                 overlay.Hide();
                 overlay = null;
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

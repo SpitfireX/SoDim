@@ -52,6 +52,12 @@
     <Compile Include="OverlayWindow.Designer.cs">
       <DependentUpon>OverlayWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScreenButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScreenButton.Designer.cs">
+      <DependentUpon>ScreenButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="SettingsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="OverlayWindow.resx">
       <DependentUpon>OverlayWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScreenButton.resx">
+      <DependentUpon>ScreenButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsWindow.resx">
       <DependentUpon>SettingsWindow.cs</DependentUpon>

@@ -58,6 +58,12 @@
     <Compile Include="ScreenButton.Designer.cs">
       <DependentUpon>ScreenButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScreenSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScreenSelector.Designer.cs">
+      <DependentUpon>ScreenSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="SettingsWindow.cs">
       <SubType>Form</SubType>
     </Compile>

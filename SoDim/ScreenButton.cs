@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SoDim
 {
     public partial class ScreenButton : UserControl
     {
+        public event EventHandler CheckedChanged;
+
         public string Title
         {
             get
@@ -28,11 +31,11 @@ namespace SoDim
         {
             get
             {
-                return line1.Text;
+                return line2.Text;
             }
             set
             {
-                line1.Text = value;
+                line2.Text = value;
             }
         }
 
@@ -40,11 +43,11 @@ namespace SoDim
         {
             get
             {
-                return line2.Text;
+                return line1.Text;
             }
             set
             {
-                line2.Text = value;
+                line1.Text = value;
             }
         }
 
@@ -66,6 +69,14 @@ namespace SoDim
         public ScreenButton(Size size, string title = "", string firstLine = "", string secondLine = ""): this(title, firstLine, secondLine)
         {
             this.Size = size;
+        }
+
+        private void button_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckedChanged == null)
+                return;
+
+            CheckedChanged.Invoke(sender, e);
         }
     }
 }

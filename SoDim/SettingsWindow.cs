@@ -33,7 +33,7 @@ namespace SoDim
             {
                 Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
                 overlay = new OverlayWindow(new Point(screenBounds.X, screenBounds.Y), new Size(screenBounds.Width, screenBounds.Height), ((double)trackBar1.Value) / 100);
-                overlay.Owner = this;
+                overlay.Owner = null;
                 overlay.Show();
             }
             else
@@ -43,9 +43,22 @@ namespace SoDim
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void trackBar2_Scroll(object sender, EventArgs e)
         {
+            if (trackBar2.Value > 90)
+            {
+                trackBar2.Value = 100;
+                label2.Text = "Blank";
+            }
+            else
+            {
+                label2.Text = trackBar2.Value + "%";
+            }
+        }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            ScreenSelector.Enabled = !checkBox1.Checked;
         }
     }
 }

@@ -30,6 +30,8 @@ namespace SoDim
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsWindow));
             this.button1 = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,18 +39,29 @@ namespace SoDim
             this.tabPageLegacy = new System.Windows.Forms.TabPage();
             this.tabPageScreens = new System.Windows.Forms.TabPage();
             this.ScreenControls = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.ScreenSelector = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.tabPageAbout = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.screenButton2 = new SoDim.ScreenButton();
+            this.screenButton1 = new SoDim.ScreenButton();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageLegacy.SuspendLayout();
             this.tabPageScreens.SuspendLayout();
+            this.ScreenControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.ScreenSelector.SuspendLayout();
+            this.tabPageAbout.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -82,7 +95,6 @@ namespace SoDim
             this.label1.TabIndex = 2;
             this.label1.Text = "0";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tabControl1
             // 
@@ -123,17 +135,75 @@ namespace SoDim
             // 
             // ScreenControls
             // 
+            this.ScreenControls.Controls.Add(this.label5);
+            this.ScreenControls.Controls.Add(this.label4);
+            this.ScreenControls.Controls.Add(this.label3);
+            this.ScreenControls.Controls.Add(this.label2);
+            this.ScreenControls.Controls.Add(this.trackBar2);
             this.ScreenControls.Location = new System.Drawing.Point(6, 235);
             this.ScreenControls.Name = "ScreenControls";
-            this.ScreenControls.Size = new System.Drawing.Size(340, 91);
+            this.ScreenControls.Size = new System.Drawing.Size(340, 94);
             this.ScreenControls.TabIndex = 2;
             this.ScreenControls.TabStop = false;
             this.ScreenControls.Text = "All Screens";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(306, 50);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(34, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Blank";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(280, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(27, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "90%";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 50);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(21, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "0%";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(140, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 33);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "0%";
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.BackColor = System.Drawing.SystemColors.Window;
+            this.trackBar2.Location = new System.Drawing.Point(3, 19);
+            this.trackBar2.Maximum = 100;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(334, 45);
+            this.trackBar2.TabIndex = 0;
+            this.trackBar2.TickFrequency = 10;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // ScreenSelector
             // 
             this.ScreenSelector.BackColor = System.Drawing.SystemColors.Control;
             this.ScreenSelector.Controls.Add(this.screenButton2);
+            this.ScreenSelector.Controls.Add(this.screenButton1);
+            this.ScreenSelector.Enabled = false;
             this.ScreenSelector.Location = new System.Drawing.Point(6, 6);
             this.ScreenSelector.Name = "ScreenSelector";
             this.ScreenSelector.Size = new System.Drawing.Size(340, 200);
@@ -142,12 +212,15 @@ namespace SoDim
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(6, 212);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(97, 17);
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "Dim all screens";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // tabPageGeneral
             // 
@@ -161,6 +234,7 @@ namespace SoDim
             // 
             // tabPageAbout
             // 
+            this.tabPageAbout.Controls.Add(this.webBrowser1);
             this.tabPageAbout.Location = new System.Drawing.Point(4, 22);
             this.tabPageAbout.Name = "tabPageAbout";
             this.tabPageAbout.Size = new System.Drawing.Size(352, 332);
@@ -186,16 +260,45 @@ namespace SoDim
             this.button3.Text = "Ok";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(352, 332);
+            this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.Url = new System.Uri("http://www.reddit.com/r/ooer", System.UriKind.Absolute);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipText = "lmao";
+            this.notifyIcon1.BalloonTipTitle = "ayy";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "u wot m8";
+            this.notifyIcon1.Visible = true;
+            // 
             // screenButton2
             // 
             this.screenButton2.BackColor = System.Drawing.Color.Transparent;
             this.screenButton2.FirstLine = "Testscreen";
-            this.screenButton2.Location = new System.Drawing.Point(77, 46);
+            this.screenButton2.Location = new System.Drawing.Point(145, 89);
             this.screenButton2.Name = "screenButton2";
-            this.screenButton2.SecondLine = "80%";
+            this.screenButton2.SecondLine = "blank";
             this.screenButton2.Size = new System.Drawing.Size(192, 108);
-            this.screenButton2.TabIndex = 0;
-            this.screenButton2.Title = "1";
+            this.screenButton2.TabIndex = 1;
+            this.screenButton2.Title = "10";
+            // 
+            // screenButton1
+            // 
+            this.screenButton1.BackColor = System.Drawing.Color.Transparent;
+            this.screenButton1.FirstLine = "Testscreen";
+            this.screenButton1.Location = new System.Drawing.Point(3, 3);
+            this.screenButton1.Name = "screenButton1";
+            this.screenButton1.SecondLine = "blank";
+            this.screenButton1.Size = new System.Drawing.Size(192, 108);
+            this.screenButton1.TabIndex = 0;
+            this.screenButton1.Title = "10";
             // 
             // SettingsWindow
             // 
@@ -205,8 +308,11 @@ namespace SoDim
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SettingsWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SoDim Settings";
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -214,7 +320,11 @@ namespace SoDim
             this.tabPageLegacy.PerformLayout();
             this.tabPageScreens.ResumeLayout(false);
             this.tabPageScreens.PerformLayout();
+            this.ScreenControls.ResumeLayout(false);
+            this.ScreenControls.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ScreenSelector.ResumeLayout(false);
+            this.tabPageAbout.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -234,8 +344,15 @@ namespace SoDim
         private System.Windows.Forms.TabPage tabPageAbout;
         private System.Windows.Forms.Panel ScreenSelector;
         private System.Windows.Forms.GroupBox ScreenControls;
-        private ScreenButton screenButton1;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
         private ScreenButton screenButton2;
+        private ScreenButton screenButton1;
+        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

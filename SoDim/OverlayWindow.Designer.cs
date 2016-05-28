@@ -38,6 +38,8 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "OverlayWindow";
             this.Opacity = 0D;
             this.ShowIcon = false;

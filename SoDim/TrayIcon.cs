@@ -14,64 +14,72 @@ namespace SoDim
         {
             get
             {
-                return Icon.Visible;
+                return icon.Visible;
             }
             set
             {
-                Icon.Visible = value;
+                icon.Visible = value;
             }
         }
         //Component declarations
-        private NotifyIcon Icon;
-        private ContextMenuStrip TrayIconContextMenu;
-        private ToolStripMenuItem CloseMenuItem;
+        private NotifyIcon icon;
+        private ContextMenuStrip contextMenu;
+        private ToolStripMenuItem closeItem;
+        private ToolStripMenuItem settingsItem;
 
         public TrayIcon()
         {
             InitializeComponent();
-            Icon.Visible = true;
+            icon.Visible = true;
         }
 
         private void InitializeComponent()
         {
-            Icon = new NotifyIcon();
+            icon = new NotifyIcon();
 
-            Icon.BalloonTipIcon = ToolTipIcon.Info;
-            Icon.BalloonTipText =
+            icon.BalloonTipIcon = ToolTipIcon.Info;
+            icon.BalloonTipText =
               "I noticed that you double-clicked me! What can I do for you?";
-            Icon.BalloonTipTitle = "You called Master?";
-            Icon.Text = "My fabulous tray icon demo application";
+            icon.BalloonTipTitle = "You called Master?";
+            icon.Text = "My fabulous tray icon demo application";
 
 
-            //The icon is added to the project resources.
-            //Here I assume that the name of the file is 'TrayIcon.ico'
-            Icon.Icon = Properties.Resources.TrayIcon;
+            //Icon from project resources.
+            icon.Icon = Properties.Resources.TrayIcon;
 
-            //Optional - handle doubleclicks on the icon:
-            Icon.DoubleClick += TrayIcon_DoubleClick;
+            //Handle doubleclicks on the icon:
+            icon.DoubleClick += TrayIcon_DoubleClick;
 
-            //Optional - Add a context menu to the TrayIcon:
-            TrayIconContextMenu = new ContextMenuStrip();
-            CloseMenuItem = new ToolStripMenuItem();
-            TrayIconContextMenu.SuspendLayout();
+            //Add a context menu to the TrayIcon:
+            contextMenu = new ContextMenuStrip();
+            closeItem = new ToolStripMenuItem();
+            settingsItem = new ToolStripMenuItem();
+            contextMenu.SuspendLayout();
 
             // 
-            // TrayIconContextMenu
+            // trayIconContextMenu
             // 
-            this.TrayIconContextMenu.Items.AddRange(new ToolStripItem[] {
-            this.CloseMenuItem});
-            this.TrayIconContextMenu.Name = "TrayIconContextMenu";
-            this.TrayIconContextMenu.Size = new Size(153, 70);
+            contextMenu.Items.AddRange(new ToolStripItem[] {
+                settingsItem, closeItem});
+            contextMenu.Name = "trayIconContextMenu";
+            contextMenu.Size = new Size(153, 70);
             // 
-            // CloseMenuItem
+            // closeItem
             // 
-            this.CloseMenuItem.Name = "CloseMenuItem";
-            this.CloseMenuItem.Size = new Size(152, 22);
-            this.CloseMenuItem.Text = "Close the tray icon program";
-            this.CloseMenuItem.Click += new EventHandler(this.CloseMenuItem_Click);
+            closeItem.Name = "closeItem";
+            closeItem.Size = new Size(152, 22);
+            closeItem.Text = "Close";
+            closeItem.Click += new EventHandler(CloseItem_Click);
+            // 
+            // settingsItem
+            // 
+            settingsItem.Name = "settingsItem";
+            settingsItem.Size = new Size(152, 22);
+            settingsItem.Text = "Settings";
+            settingsItem.Click += new EventHandler(SettingsItem_Click);
 
-            TrayIconContextMenu.ResumeLayout(false);
-            Icon.ContextMenuStrip = TrayIconContextMenu;
+            contextMenu.ResumeLayout(false);
+            icon.ContextMenuStrip = contextMenu;
         }
 
         private void TrayIcon_DoubleClick(object sender, EventArgs e)
@@ -79,7 +87,7 @@ namespace SoDim
             App.Instance.ShowSettings();
         }
 
-        private void CloseMenuItem_Click(object sender, EventArgs e)
+        private void CloseItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you really want to close SoDim?",
                     "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
@@ -87,6 +95,10 @@ namespace SoDim
             {
                 Application.Exit();
             }
+        }
+        private void SettingsItem_Click(object sender, EventArgs e)
+        {
+            App.Instance.ShowSettings();
         }
     }
 }

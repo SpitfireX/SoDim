@@ -44,23 +44,20 @@ namespace SoDim
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.ScreenSelector = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.tabPageAbout = new System.Windows.Forms.TabPage();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.screenButton2 = new SoDim.ScreenButton();
-            this.screenButton1 = new SoDim.ScreenButton();
+            this.ScreenSelector = new SoDim.ScreenSelector();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageLegacy.SuspendLayout();
             this.tabPageScreens.SuspendLayout();
             this.ScreenControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            this.ScreenSelector.SuspendLayout();
             this.tabPageAbout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,8 +119,8 @@ namespace SoDim
             // 
             // tabPageScreens
             // 
-            this.tabPageScreens.Controls.Add(this.ScreenControls);
             this.tabPageScreens.Controls.Add(this.ScreenSelector);
+            this.tabPageScreens.Controls.Add(this.ScreenControls);
             this.tabPageScreens.Controls.Add(this.checkBox1);
             this.tabPageScreens.Location = new System.Drawing.Point(4, 22);
             this.tabPageScreens.Name = "tabPageScreens";
@@ -198,17 +195,6 @@ namespace SoDim
             this.trackBar2.TickFrequency = 10;
             this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
-            // ScreenSelector
-            // 
-            this.ScreenSelector.BackColor = System.Drawing.SystemColors.Control;
-            this.ScreenSelector.Controls.Add(this.screenButton2);
-            this.ScreenSelector.Controls.Add(this.screenButton1);
-            this.ScreenSelector.Enabled = false;
-            this.ScreenSelector.Location = new System.Drawing.Point(6, 6);
-            this.ScreenSelector.Name = "ScreenSelector";
-            this.ScreenSelector.Size = new System.Drawing.Size(340, 200);
-            this.ScreenSelector.TabIndex = 1;
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -242,6 +228,16 @@ namespace SoDim
             this.tabPageAbout.Text = "About";
             this.tabPageAbout.UseVisualStyleBackColor = true;
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(352, 332);
+            this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.Url = new System.Uri("http://www.reddit.com/r/ooer", System.UriKind.Absolute);
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(297, 376);
@@ -260,16 +256,6 @@ namespace SoDim
             this.button3.Text = "Ok";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(352, 332);
-            this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("http://www.reddit.com/r/ooer", System.UriKind.Absolute);
-            // 
             // notifyIcon1
             // 
             this.notifyIcon1.BalloonTipText = "lmao";
@@ -278,27 +264,12 @@ namespace SoDim
             this.notifyIcon1.Text = "u wot m8";
             this.notifyIcon1.Visible = true;
             // 
-            // screenButton2
+            // ScreenSelector
             // 
-            this.screenButton2.BackColor = System.Drawing.Color.Transparent;
-            this.screenButton2.FirstLine = "Testscreen";
-            this.screenButton2.Location = new System.Drawing.Point(145, 89);
-            this.screenButton2.Name = "screenButton2";
-            this.screenButton2.SecondLine = "blank";
-            this.screenButton2.Size = new System.Drawing.Size(192, 108);
-            this.screenButton2.TabIndex = 1;
-            this.screenButton2.Title = "10";
-            // 
-            // screenButton1
-            // 
-            this.screenButton1.BackColor = System.Drawing.Color.Transparent;
-            this.screenButton1.FirstLine = "Testscreen";
-            this.screenButton1.Location = new System.Drawing.Point(3, 3);
-            this.screenButton1.Name = "screenButton1";
-            this.screenButton1.SecondLine = "blank";
-            this.screenButton1.Size = new System.Drawing.Size(192, 108);
-            this.screenButton1.TabIndex = 0;
-            this.screenButton1.Title = "10";
+            this.ScreenSelector.Location = new System.Drawing.Point(6, 6);
+            this.ScreenSelector.Name = "ScreenSelector";
+            this.ScreenSelector.Size = new System.Drawing.Size(340, 200);
+            this.ScreenSelector.TabIndex = 3;
             // 
             // SettingsWindow
             // 
@@ -323,7 +294,6 @@ namespace SoDim
             this.ScreenControls.ResumeLayout(false);
             this.ScreenControls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            this.ScreenSelector.ResumeLayout(false);
             this.tabPageAbout.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -342,17 +312,15 @@ namespace SoDim
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TabPage tabPageAbout;
-        private System.Windows.Forms.Panel ScreenSelector;
         private System.Windows.Forms.GroupBox ScreenControls;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private ScreenButton screenButton2;
-        private ScreenButton screenButton1;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private ScreenSelector ScreenSelector;
     }
 }
 

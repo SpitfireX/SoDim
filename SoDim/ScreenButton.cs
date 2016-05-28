@@ -15,6 +15,19 @@ namespace SoDim
     {
         public event EventHandler CheckedChanged;
 
+        public bool Checked
+        {
+            get
+            {
+                return button.Checked;
+            }
+
+            set
+            {
+                button.Checked = value;
+            }
+        }
+
         public string Title
         {
             get
@@ -54,6 +67,8 @@ namespace SoDim
         public ScreenButton()
         {
             InitializeComponent();
+
+            button.CheckedChanged += button_CheckedChanged;
             title.Parent = button;
             line1.Parent = button;
             line2.Parent = button;
@@ -76,7 +91,7 @@ namespace SoDim
             if (CheckedChanged == null)
                 return;
 
-            CheckedChanged.Invoke(sender, e);
+            CheckedChanged.Invoke(this, e);
         }
     }
 }

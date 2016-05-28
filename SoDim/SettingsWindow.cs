@@ -58,7 +58,7 @@ namespace SoDim
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            //SoDim.ScreenSelector.Enabled = !checkBox1.Checked;
+            ScreenSelector.Enabled = !checkBox1.Checked;
         }
     }
 }

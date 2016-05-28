@@ -236,7 +236,7 @@ namespace SoDim
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(352, 332);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("http://www.reddit.com/r/ooer", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("http://spitfirex.net", System.UriKind.Absolute);
             // 
             // button2
             // 
@@ -266,8 +266,11 @@ namespace SoDim
             // 
             // ScreenSelector
             // 
+            this.ScreenSelector.BackColor = System.Drawing.SystemColors.Control;
+            this.ScreenSelector.Enabled = false;
             this.ScreenSelector.Location = new System.Drawing.Point(6, 6);
             this.ScreenSelector.Name = "ScreenSelector";
+            this.ScreenSelector.Selected = null;
             this.ScreenSelector.Size = new System.Drawing.Size(340, 200);
             this.ScreenSelector.TabIndex = 3;
             // 

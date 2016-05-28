@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SoDim
 {
@@ -18,12 +19,49 @@ namespace SoDim
         {
             InitializeComponent();
 
+            int width = this.Size.Width,
+                height = this.Size.Height,
+                workspaceWidth = 0,
+                workspaceHeight = 0;
+
+            foreach (var screen in Screen.AllScreens)
+            {
+                Rectangle b = screen.Bounds;
+                Debug.WriteLine(b);
+
+                if (b.X + b.Width > workspaceWidth)
+                    workspaceWidth = b.X + b.Width;
+
+                if (b.Y + b.Height > workspaceHeight)
+                    workspaceHeight = b.Y + b.Height;
+            }
+            Debug.WriteLine(workspaceWidth + ", " + workspaceHeight);
+
+
+
+            double scale = 0.0;
+            if (workspaceWidth > workspaceHeight)
+            {
+                scale = (double) width / workspaceWidth;
+            }
+            else
+            {
+                scale = (double) height / workspaceHeight;
+            }
+            Debug.WriteLine("scale: " + scale);
+
             int count = 1;
             foreach (var screen in Screen.AllScreens)
             {
-                ScreenButton sb = new ScreenButton(new Size(screen.Bounds.Width / 10, screen.Bounds.Height / 10), count.ToString(), screen.DeviceName, "0%");
-                int x = (count - 1) * 100;
-                sb.Location = new Point(x, 0);
+                Rectangle b = screen.Bounds;
+                int sbWidth = (int)(b.Width * scale);
+                int sbHeight = (int)(b.Height * scale);
+                int sbX = (int)(b.X * scale);
+                int sbY = (int)(b.Y * scale);
+                Debug.WriteLine(sbX + ", " + sbY + ", " + sbWidth + ", " + sbHeight);
+
+                ScreenButton sb = new ScreenButton(new Size(sbWidth, sbHeight), count.ToString(), screen.DeviceName, "0%");
+                sb.Location = new Point(sbX, sbY);
                 sb.CheckedChanged += ScreenButtons_CheckedChanged;
 
                 this.Controls.Add(sb);

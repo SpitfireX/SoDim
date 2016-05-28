@@ -16,7 +16,8 @@ namespace SoDim
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SettingsWindow());
+            //Application.Run(new SettingsWindow());
+            Application.Run(App.Instance);
         }
     }
 }

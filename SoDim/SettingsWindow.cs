@@ -60,5 +60,14 @@ namespace SoDim
         {
             ScreenSelector.Enabled = !checkBox1.Checked;
         }
+
+        private void SettingsWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Hide();
+            }
+        }
     }
 }

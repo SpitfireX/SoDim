@@ -30,8 +30,6 @@ namespace SoDim
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsWindow));
             this.button1 = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,7 +48,6 @@ namespace SoDim
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.ScreenSelector = new SoDim.ScreenSelector();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -256,14 +253,6 @@ namespace SoDim
             this.button3.Text = "Ok";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.BalloonTipText = "lmao";
-            this.notifyIcon1.BalloonTipTitle = "ayy";
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "u wot m8";
-            this.notifyIcon1.Visible = true;
-            // 
             // ScreenSelector
             // 
             this.ScreenSelector.BackColor = System.Drawing.SystemColors.Control;
@@ -288,6 +277,7 @@ namespace SoDim
             this.Name = "SettingsWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SoDim Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsWindow_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPageLegacy.ResumeLayout(false);
@@ -322,7 +312,6 @@ namespace SoDim
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
         private ScreenSelector ScreenSelector;
     }
 }

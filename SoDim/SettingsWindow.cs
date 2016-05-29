@@ -19,6 +19,7 @@ namespace SoDim
         {
             InitializeComponent();
             Icon = Properties.Resources.Icon;
+            pictureBox.Image = Bitmap.FromHicon(Properties.Resources.Icon.Handle);
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -69,6 +70,11 @@ namespace SoDim
                 e.Cancel = true;
                 Hide();
             }
+        }
+
+        private void aboutTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            Process.Start(e.LinkText);
         }
     }
 }

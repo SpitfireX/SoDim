@@ -30,6 +30,7 @@ namespace SoDim
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsWindow));
             this.button1 = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,7 +46,10 @@ namespace SoDim
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.tabPageAbout = new System.Windows.Forms.TabPage();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.aboutTextBox = new System.Windows.Forms.RichTextBox();
+            this.versionLabel = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.ScreenSelector = new SoDim.ScreenSelector();
@@ -56,6 +60,7 @@ namespace SoDim
             this.ScreenControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.tabPageAbout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -217,7 +222,10 @@ namespace SoDim
             // 
             // tabPageAbout
             // 
-            this.tabPageAbout.Controls.Add(this.webBrowser1);
+            this.tabPageAbout.Controls.Add(this.aboutTextBox);
+            this.tabPageAbout.Controls.Add(this.versionLabel);
+            this.tabPageAbout.Controls.Add(this.nameLabel);
+            this.tabPageAbout.Controls.Add(this.pictureBox);
             this.tabPageAbout.Location = new System.Drawing.Point(4, 22);
             this.tabPageAbout.Name = "tabPageAbout";
             this.tabPageAbout.Size = new System.Drawing.Size(352, 332);
@@ -225,15 +233,49 @@ namespace SoDim
             this.tabPageAbout.Text = "About";
             this.tabPageAbout.UseVisualStyleBackColor = true;
             // 
-            // webBrowser1
+            // aboutTextBox
             // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(352, 332);
-            this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("http://spitfirex.net", System.UriKind.Absolute);
+            this.aboutTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.aboutTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.aboutTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.aboutTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboutTextBox.Location = new System.Drawing.Point(3, 202);
+            this.aboutTextBox.Name = "aboutTextBox";
+            this.aboutTextBox.ReadOnly = true;
+            this.aboutTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.aboutTextBox.Size = new System.Drawing.Size(346, 127);
+            this.aboutTextBox.TabIndex = 3;
+            this.aboutTextBox.Text = resources.GetString("aboutTextBox.Text");
+            this.aboutTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.aboutTextBox_LinkClicked);
+            // 
+            // versionLabel
+            // 
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.versionLabel.Location = new System.Drawing.Point(165, 167);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(31, 20);
+            this.versionLabel.TabIndex = 2;
+            this.versionLabel.Text = "0.1";
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(145, 143);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(71, 24);
+            this.nameLabel.TabIndex = 1;
+            this.nameLabel.Text = "SoDim";
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(116, 12);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
             // 
             // button2
             // 
@@ -288,6 +330,8 @@ namespace SoDim
             this.ScreenControls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.tabPageAbout.ResumeLayout(false);
+            this.tabPageAbout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -311,8 +355,11 @@ namespace SoDim
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.WebBrowser webBrowser1;
         private ScreenSelector ScreenSelector;
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Label versionLabel;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.RichTextBox aboutTextBox;
     }
 }
 

@@ -54,10 +54,7 @@
       <DependentUpon>OverlayWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="ScreenButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ScreenButton.Designer.cs">
-      <DependentUpon>ScreenButton.cs</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ScreenSelector.cs">
       <SubType>UserControl</SubType>
@@ -76,9 +73,6 @@
     <Compile Include="TrayIcon.cs" />
     <EmbeddedResource Include="OverlayWindow.resx">
       <DependentUpon>OverlayWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ScreenButton.resx">
-      <DependentUpon>ScreenButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScreenSelector.resx">
       <DependentUpon>ScreenSelector.cs</DependentUpon>

@@ -1,97 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
-using System.Data;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
 
 namespace SoDim
 {
-    public partial class ScreenButton : UserControl
+    public class ScreenButton : RadioButton
     {
-        public event EventHandler CheckedChanged;
+        public string Title { get; set; }
+        public string Subtitle { get; set; }
 
-        public bool Checked
+        public ScreenButton(Size size, string title, string subtitle) : base()
         {
-            get
-            {
-                return button.Checked;
-            }
-
-            set
-            {
-                button.Checked = value;
-            }
+            Appearance = Appearance.Button;
+            Size = size;
+            Title = title;
+            Subtitle = subtitle;
         }
 
-        public string Title
+        protected override void OnPaint(PaintEventArgs e)
         {
-            get
+            base.OnPaint(e);
+            Rectangle rect = e.ClipRectangle;
+            Graphics g = e.Graphics;
+
+            g.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+            StringFormat titleFormat = new StringFormat();
+            titleFormat.Alignment = StringAlignment.Center;
+            titleFormat.LineAlignment = StringAlignment.Center;
+
+            StringFormat subtitleFormat = new StringFormat();
+            subtitleFormat.Alignment = StringAlignment.Center;
+            subtitleFormat.LineAlignment = StringAlignment.Far;
+
+            Font titleFont = new Font(Font.Name, rect.Height * 0.7F, FontStyle.Bold);
+            Font subtitleFont = new Font(Font.Name, 12, FontStyle.Regular);
+
+            if (Enabled)
             {
-                return title.Text;
+                g.DrawString(Title, titleFont, SystemBrushes.ControlDarkDark, rect, titleFormat);
+                g.DrawString(Subtitle, subtitleFont, SystemBrushes.ControlText, rect, subtitleFormat);
             }
-            set
+            else
             {
-                title.Text = value;
+                g.DrawString(Title, titleFont, SystemBrushes.ControlDark, rect, titleFormat);
+                g.DrawString(Subtitle, subtitleFont, SystemBrushes.ControlDarkDark, rect, subtitleFormat);
             }
-        }
-
-        public string FirstLine
-        {
-            get
-            {
-                return line2.Text;
-            }
-            set
-            {
-                line2.Text = value;
-            }
-        }
-
-        public string SecondLine
-        {
-            get
-            {
-                return line1.Text;
-            }
-            set
-            {
-                line1.Text = value;
-            }
-        }
-
-        public ScreenButton()
-        {
-            InitializeComponent();
-
-            button.CheckedChanged += button_CheckedChanged;
-            title.Parent = button;
-            line1.Parent = button;
-            line2.Parent = button;
-        }
-
-        public ScreenButton(string title = "", string firstLine = "", string secondLine = ""): this()
-        {
-            this.Title = title;
-            this.FirstLine = firstLine;
-            this.SecondLine = secondLine;
-        }
-
-        public ScreenButton(Size size, string title = "", string firstLine = "", string secondLine = ""): this(title, firstLine, secondLine)
-        {
-            this.Size = size;
-        }
-
-        private void button_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CheckedChanged == null)
-                return;
-
-            CheckedChanged.Invoke(this, e);
         }
     }
 }

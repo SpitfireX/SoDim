@@ -72,6 +72,13 @@ namespace SoDim
             if (minY < 0)
                 offsetY = 0 - minY;
 
+            //additional offsets to center the buttons in the viewport
+            if (width * invscale > workspaceWidth)
+                offsetX += (int)((width * invscale) - workspaceWidth) / 2;
+            if (height * invscale > workspaceHeight)
+                offsetY += (int)((height * invscale) - workspaceHeight) / 2;
+
+
             int count = 1;
             foreach (var screen in Screen.AllScreens)
             {

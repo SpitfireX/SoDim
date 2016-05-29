@@ -18,6 +18,7 @@ namespace SoDim
         public SettingsWindow()
         {
             InitializeComponent();
+            Icon = Properties.Resources.Icon;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)

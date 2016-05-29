@@ -18,7 +18,7 @@ namespace SoDim
         public ScreenSelector()
         {
             InitializeComponent();
-
+            
             int width = this.Size.Width,
                 height = this.Size.Height,
                 workspaceWidth = 0,
@@ -89,7 +89,7 @@ namespace SoDim
                 int sbY = (int)((b.Y + offsetY) * scale);
                 Debug.WriteLine(sbX + ", " + sbY + ", " + sbWidth + ", " + sbHeight);
 
-                ScreenButton sb = new ScreenButton(new Size(sbWidth, sbHeight), count.ToString(), screen.DeviceName, "0%");
+                ScreenButton sb = new ScreenButton(new Size(sbWidth, sbHeight), count.ToString(), "0%");
                 sb.Location = new Point(sbX, sbY);
                 sb.CheckedChanged += ScreenButtons_CheckedChanged;
 
@@ -97,6 +97,29 @@ namespace SoDim
                 count++;
             }
 
+        }
+
+        protected override void OnEnabledChanged(EventArgs e)
+        {
+            base.OnEnabledChanged(e);
+            if (Enabled)
+            {
+                foreach (var c in Controls)
+                {
+                    if (c is ScreenButton)
+                    {
+                        (c as ScreenButton).Checked = true;
+                        break;
+                    }        
+                }
+            } else
+            {
+                foreach (var c in Controls)
+                {
+                    if (c is ScreenButton)
+                        (c as ScreenButton).Checked = false;
+                }
+            }
         }
 
         private void ScreenButtons_CheckedChanged(object sender, EventArgs e)

@@ -18,9 +18,11 @@ namespace SoDim
         public ScreenSelector()
         {
             InitializeComponent();
-            
-            int width = this.Size.Width,
-                height = this.Size.Height,
+
+            int padding = 5;
+
+            int width = this.Size.Width - (padding * 2),
+                height = this.Size.Height - (padding * 2),
                 workspaceWidth = 0,
                 workspaceHeight = 0,
                 maxX = 0,
@@ -78,15 +80,14 @@ namespace SoDim
             if (height * invscale > workspaceHeight)
                 offsetY += (int)((height * invscale) - workspaceHeight) / 2;
 
-
             int count = 1;
             foreach (var screen in Screen.AllScreens)
             {
                 Rectangle b = screen.Bounds;
                 int sbWidth = (int)(b.Width * scale);
                 int sbHeight = (int)(b.Height * scale);
-                int sbX = (int)((b.X + offsetX) * scale);
-                int sbY = (int)((b.Y + offsetY) * scale);
+                int sbX = (int)((b.X + offsetX) * scale) + padding;
+                int sbY = (int)((b.Y + offsetY) * scale) + padding;
                 Debug.WriteLine(sbX + ", " + sbY + ", " + sbWidth + ", " + sbHeight);
 
                 ScreenButton sb = new ScreenButton(new Size(sbWidth, sbHeight), count.ToString(), "0%");

@@ -36,12 +36,7 @@ namespace SoDim
         private void InitializeComponent()
         {
             icon = new NotifyIcon();
-
-            icon.BalloonTipIcon = ToolTipIcon.Info;
-            icon.BalloonTipText =
-              "I noticed that you double-clicked me! What can I do for you?";
-            icon.BalloonTipTitle = "You called Master?";
-            icon.Text = "My fabulous tray icon demo application";
+            icon.Text = "SoDim";
 
 
             //Icon from project resources.

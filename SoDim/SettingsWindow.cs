@@ -33,8 +33,8 @@ namespace SoDim
         {
             if (overlay == null)
             {
-                Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
-                overlay = new OverlayWindow(new Point(screenBounds.X, screenBounds.Y), new Size(screenBounds.Width, screenBounds.Height), ((double)trackBar1.Value) / 100);
+                Rectangle screenBounds = Screen.AllScreens[2].Bounds;
+                overlay = new OverlayWindow(screenBounds.Location, screenBounds.Size, ((double)trackBar1.Value) / 100);
                 overlay.Owner = null;
                 overlay.Show();
             }
